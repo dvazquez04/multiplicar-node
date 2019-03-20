@@ -1,29 +1,25 @@
-const argv = require('./config/main').argv;
-var Color = require('color');
+const argv = require("./config/main").argv;
+
+//const argv = require("./config/main").argv;
+
+let { crearArchivo, listarDatos } = require('./multiplicar/multiplicar');
 
 //console.log(argv);
 
-//Traego las promesas de multiplicar   
-let { crearArchivo, listarDatos } = require('./multiplicar/multiplicar')
+//console.log(require('./config/main').argv);
 
-let comando = argv._[0];
-
-//console.log(`Base: ${argv.base}`);
-
-switch (comando) {
+switch (argv._[0]) {
     case 'crear':
         crearArchivo(argv.base, argv.limite)
-            .then(archivo => { console.log(`Archivo ${archivo} fue creado correctamente`) })
-            .catch(err => {
-                console.log(err);
-            })
+            .then(archivo => { console.log(`El archivo ${archivo} fue creado correctamente`) })
+            .catch(err => { console.log(err) })
         break;
     case 'listar':
         listarDatos(argv.base, argv.limite)
-            .then(() => console.log(datos))
-            .catch(err => console.log(err))
+            // .then(archivo => { console.log(`El archivo ${archivo} fue creado correctamente`) })
+            // .catch(err => { console.log(err) })
         break;
     default:
-        console.log(`El comando ${comando} no se encuentra`);
+        console.log(`No se encontro la funcion ${argv._[0]}`);
         break;
 }

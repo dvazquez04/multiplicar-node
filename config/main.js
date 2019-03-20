@@ -1,20 +1,19 @@
-const opts = {
+const opt = {
     base: {
-        demand: true,
-        alias: 'b'
+        alias: 'b',
+        require
     },
     limite: {
-        require,
-        alias: 'l',
-        default: 4
+        alias: 'lim',
+        default: 30
     }
 }
 
-
 const argv = require('yargs')
-    .command('listar', 'Imprime lista de archivos', opts)
-    .command('crear', 'Imprime lista de archivos', opts)
+    .command('listar', 'método para pintar una lista de información', opt)
+    .command('crear', 'método para crear un objeto', opt)
     .argv;
+
 
 module.exports = {
     argv
